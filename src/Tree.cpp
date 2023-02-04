@@ -55,56 +55,6 @@ bool Tree<T>::recherche(T p, T& tmp)
     return true;
 }
 
-
-/**
-cherche et affiche les p max elements d'apres un noeud
-**/
-template <class T>
-void Tree<T>::afficherMax(Node<T>*N, int* p)
-{
-    if(!N)
-        return;
-    afficherMax(N->right, p);
-    if((*p))
-    {
-        cout << "==> " << N->value << endl;
-        (*p)--;
-    }
-    if((*p))
-        afficherMax(N->left, p);
-}
-
-
-template <class T>
-void Tree<T>::afficherMin(Node<T>*N, int* p)
-{
-    if(!N)
-        return;
-    afficherMin(N->left, p);
-    if((*p))
-    {
-        cout << "==> " << N->value << endl;
-        (*p)--;
-    }
-    if((*p))
-        afficherMin(N->right, p);
-}
-
-/**
-cherche et affiche les p max elements d'apres la racine
-**/
-template <class T>
-void Tree<T>::afficherMax(int p)
-{
-    afficherMax(R, &p);
-}
-
-template <class T>
-void Tree<T>::afficherMin(int p)
-{
-    afficherMin(R, &p);
-}
-
 /**
 retourne la hauteur d'un noeud
 **/
@@ -252,41 +202,6 @@ template <class T>
 void Tree<T>::inserer(T freq)
 {
     R = inserer(R, freq);
-}
-
-
-template <class T>
-Node<T>* Tree<T>::supprimer()
-{
-    supprimer(R);
-}
-
-/**
-Supprime le maximum element dans l'arbre
-**/
-template <class T>
-Node<T>* Tree<T>::supprimer(Node<T>* N)
-{
-    if(!R)
-        return nullptr;
-
-    if(!N->right)
-    {
-        if(N == R)
-            R = R->left;
-        N->left = nullptr;
-        return N;
-    }
-
-    if(!N->right->right)
-    {
-        Node<T>* tmp = N->right;
-        N->right = N->right->left;
-        tmp->left = nullptr;
-        return tmp;
-    }
-
-    return supprimer(N->right);
 }
 
 /**
