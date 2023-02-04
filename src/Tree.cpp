@@ -231,6 +231,9 @@ T Tree<T>::getMax()
     return P;
 }
 
+/**
+C'est la fonction principale qui permet de calculer le Fibonacci d'un nombre d'une manière recursive
+**/
 template <class T>
 long long Tree<T>::Fibonacci(int nbr)
 {
