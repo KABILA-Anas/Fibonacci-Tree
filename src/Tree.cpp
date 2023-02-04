@@ -35,9 +35,7 @@ bool Tree<T>::recherche(Node<T>*N, T p, T& tmp)
     }
     if(N->value == p)
     {
-        //cout << N->value;
         tmp = N->value;
-        //cout << "hello" << endl;
         return true;
     }
     if(p > N->value)
@@ -54,7 +52,6 @@ bool Tree<T>::recherche(T p, T& tmp)
 {
     if(recherche(R, p, tmp)==false)
         return false;
-    //cout << "hello" << endl;
     return true;
 }
 
@@ -70,7 +67,7 @@ void Tree<T>::afficherMax(Node<T>*N, int* p)
     afficherMax(N->right, p);
     if((*p))
     {
-        cout << "==> " << N->value  /*<< "----" << N->height*/<< endl;
+        cout << "==> " << N->value << endl;
         (*p)--;
     }
     if((*p))
@@ -86,7 +83,7 @@ void Tree<T>::afficherMin(Node<T>*N, int* p)
     afficherMin(N->left, p);
     if((*p))
     {
-        cout << "==> " << N->value  /*<< "----" << N->height*/<< endl;
+        cout << "==> " << N->value << endl;
         (*p)--;
     }
     if((*p))
@@ -237,9 +234,9 @@ C'est la fonction principale qui permet de calculer le Fibonacci d'un nombre d'u
 template <class T>
 long long Tree<T>::Fibonacci(int nbr)
 {
-    //Pair P = getMax();
     Pair p1, p2, tmp;
     long long val1, val2;
+    
     recherche(Pair(nbr, 0), tmp);
     if(tmp.getKey() == -1)
     {
@@ -249,7 +246,6 @@ long long Tree<T>::Fibonacci(int nbr)
         return val1 + val2;
     }
     return tmp.getValue();
-
 }
 
 template <class T>
